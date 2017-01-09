@@ -11,15 +11,22 @@
    
     <title>Data in charts</title>
   </head>
-  <body>
+  <body ng-app="app">
     <div class="jumbotron">
       <h1>Test</h1>
     </div>
 
 <div ng-controller="DataController">
-  <button onclick="loadData()">Click me</button>
-</div>
+{{text}}<br>{{name}}
+  <button ng-click="load()">Click me</button>
 
+
+</div>
+<div ng-controller="TestController">
+ {{text}}<br>{{name}}
+  <button ng-click="testing()">Click me</button>
+ 
+</div>
     <!-- this one gives me a problem -->
     <!-- <script>
       d3.csv("js/Lamp.csv", function (myArrayOfObjects){
@@ -29,6 +36,6 @@
       });
     </script> -->
 
-<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
