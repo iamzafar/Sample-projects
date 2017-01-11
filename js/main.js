@@ -1,7 +1,8 @@
     // creating a module and naming it as app
     var app=angular.module('app', []);
-    app.service('ApiService', function($http){
 
+    // ApiService is used to get the JSON data using API
+    app.service('ApiService', function($http){
       this.getData=function(link){
         return $http({
           method: 'GET',
@@ -12,19 +13,21 @@
 
     // controller for the Bar chart
     app.controller('DataController', function($scope, $rootScope, ApiService){
-      var d={};
+      
+      // a will store number of calls in every hour; therefore, the length is 24.
       var  a=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];     
       var chartData=[];
 
       ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB')
       .then(function(res){
         console.dir(res.data);
+
+        // dataset -> array of JSON objects
         ds = res.data;
-        var d;
-        for(var i=0; i<ds.length; i++){
-          // console.dir(ds[i]);  
-          var dt=new Date(ds[i].calldatetime);
-          // console.log(dt.getHours());  
+        
+        // get the hour and increment the correcsponding array index
+        for(var i=0; i<ds.length; i++){         
+          var dt=new Date(ds[i].calldatetime);           
           a[dt.getHours()]++; 
           
         }
@@ -33,9 +36,10 @@
         "#ae83d5", "#bf273e", "#ce2aeb", "#bca44a", "#618d1b", "#1ee67b", "#b0ec44", "#a4a0c9", "#322849", "#86f71a", "#7d9058"];
         console.dir(a);
 
-        // 
+        // create a JSON dataset for the pie chart
         for(var h=0; h<24; h++){
           if(a[h] == 0){
+            // according the documentation value cannot be 0 or less; therefore, the input 0.1 server as a 0.
             chartData[h]={"label":h.toString(), "value": 0.1,"color": colors[h]};
           }else{
             chartData[h]={"label":h.toString(), "value": a[h],"color": colors[h]};
@@ -73,7 +77,7 @@
             "canvasWidth": 800,
             "canvasHeight": 800,
             "pieInnerRadius": "85%",
-            "pieOuterRadius": "40%"
+            "pieOuterRadius": "50%"
           },
           "data": {
             "sortOrder": "label-asc",
@@ -123,12 +127,8 @@
         
       });
 
-      $rootScope.text='root text';
-      $scope.name='DataController';
-      $scope.load=function(){
-        alert('button clicked');
-      }
 
+      // 
       $scope.dataset=ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB').then(function(res){
         console.dir(res.data);
         $scope.array = res.data;

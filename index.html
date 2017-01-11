@@ -17,50 +17,35 @@
   <body ng-app="app">
     <br><br>
     <!-- Bar chart will be here -->
-    <div class="container">
-      <div class="jumbotron">
-        <!-- testing the css -->
-
+    <!-- <div class="container">
+      <div class="jumbotron">        
         <div ng-controller="ChartController">
           <h1 id="makeRed">Number of calls in 24 hour</h1> 
           <button type="button" class="btn btn-primary">Sort</button>
           <br><br>
-
         </div>
-      </div>
-      
-    </div>
-
+      </div>      
+    </div> -->
   <!-- Pi chart information will be here  -->
   <div class="container">
-
     <!-- <div class="jumbotron">
       <h2>Pi chart goes here</h2>
     </div> -->
-
-    <div ng-controller="DataController">
-      
-      <div id="pieChart"></div>
+    <div class="jumbotron">
+    <h1><small>Amount of 911 calls in 24 hours!!!</small></h1>
+      <div ng-controller="DataController">      
+        <div id="pieChart" class="makeUpper"></div>
+      </div>
     </div>
-
-    <div ng-controller="TestController">
+    <!-- <div ng-controller="TestController">
       {{text}}<br>{{name}}
       <button ng-click="testing()">Click me</button> 
-    </div>
+    </div> -->
   </div>
-
   <br><br>
-    <!-- this one gives me a problem -->
-    <!-- <script>
-      d3.csv("js/Lamp.csv", function (myArrayOfObjects){
-        myArrayOfObjects.forEach(function (d){
-          console.log(d.x + ", " + d.y);
-        });
-      });
-    </script> -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
-    <script src="js/d3pie.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
+  <script src="js/d3pie.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
 
   </body>
 </html>
