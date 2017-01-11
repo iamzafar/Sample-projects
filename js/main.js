@@ -76,7 +76,7 @@
           "size": {
             "canvasWidth": 800,
             "canvasHeight": 800,
-            "pieInnerRadius": "85%",
+            "pieInnerRadius": "65%",
             "pieOuterRadius": "50%"
           },
           "data": {

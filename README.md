@@ -6,6 +6,7 @@ All data was obtained from [OpenData Baltimore](https://data.baltimorecity.gov/)
 - Hours are displayed as 24 hour period;
 - Dataset contains information for the year of 2015. Program calculates number of calls for every hour and displays it as a percentage on the pie chart.
 - [d3pie](https://github.com/benkeen/d3pie) is used to create a pie chart.
+- Segment of a pie chart can be selected and moved.
 
 ## Project Setup
 index.html is the main pages where data is presented. For this project AngularJS as a front-end framework.
