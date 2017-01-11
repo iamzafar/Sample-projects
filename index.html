@@ -3,30 +3,53 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-   <script src="https://d3js.org/d3.v4.min.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/sp/sample-projects/css/design.css"> 
    
     <title>Data in charts</title>
   </head>
   <body ng-app="app">
-    <div class="jumbotron">
-      <h1>Test</h1>
+    <br><br>
+    <!-- Bar chart will be here -->
+    <div class="container">
+      <div class="jumbotron">
+        <!-- testing the css -->
+
+        <div ng-controller="ChartController">
+          <h1 id="makeRed">Number of calls in 24 hour</h1> 
+          <button type="button" class="btn btn-primary">Sort</button>
+          <br><br>
+
+        </div>
+      </div>
+      
     </div>
 
-<div ng-controller="DataController">
-{{text}}<br>{{name}}
-  <button ng-click="load()">Click me</button>
+  <!-- Pi chart information will be here  -->
+  <div class="container">
 
+    <!-- <div class="jumbotron">
+      <h2>Pi chart goes here</h2>
+    </div> -->
+    
+    <div ng-controller="DataController">
+      
+      <div id="pieChart"></div>
+    </div>
 
-</div>
-<div ng-controller="TestController">
- {{text}}<br>{{name}}
-  <button ng-click="testing()">Click me</button>
- 
-</div>
+    <div ng-controller="TestController">
+      {{text}}<br>{{name}}
+      <button ng-click="testing()">Click me</button> 
+    </div>
+  </div>
+
+  <br><br>
     <!-- this one gives me a problem -->
     <!-- <script>
       d3.csv("js/Lamp.csv", function (myArrayOfObjects){
@@ -35,7 +58,9 @@
         });
       });
     </script> -->
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
+    <script src="/sp/sample-projects/js/d3pie.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+
   </body>
 </html>
