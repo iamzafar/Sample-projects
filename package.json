@@ -1,0 +1,19 @@
+{
+  "name": "Sample-projects",
+  "version": "1.0.0",
+  "description": "You can view a [website](https://mzt14.github.io/Sample-projects/) to check the data.\r All data was obtained from [OpenData Baltimore](https://data.baltimorecity.gov/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mzt14@github.com/mzt14/Sample-projects.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mzt14/Sample-projects/issues"
+  },
+  "homepage": "https://github.com/mzt14/Sample-projects#readme"
+}
