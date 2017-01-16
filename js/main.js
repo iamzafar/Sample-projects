@@ -26,7 +26,8 @@
         // console.dir(res.data);
 
         // dataset -> array of JSON objects
-        $scope.arr, ds = res.data;
+        ds = res.data;
+        $rootScope.arr = ds;
         
         
         // get the hour and increment the correcsponding array index
@@ -133,22 +134,29 @@
 
 
       // 
-      $scope.dataset=ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB')
-      .then(function(res){
-        // console.dir(res.data);
-        $scope.array = res.data;
+      // $scope.dataset=ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB')
+      // .then(function(res){
+      //   // console.dir(res.data);
+      //   $scope.array = res.data;
 
-      });
+      // });
 
     });
 
 
 
-    app.controller('TestController', function($scope, $rootScope){ // second controller
-      $scope.name='TestController';
-      $scope.testing=function(){
-        alert('test function');
-      }
+    app.controller('TableController', function($scope, ApiService){ // second controller
+      $scope.name='TableController';
+       $scope.dataset=ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB')
+      .then(function(res){
+        console.dir(res.data);
+        $scope.array = res.data;
+      });
+
+      // });
+      // $scope.testing=function(){
+      //   alert('test function');
+      // }      
     });
 
      app.controller('ChartController', function($scope, $rootScope, ApiService){ // second controller
