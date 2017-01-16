@@ -17,13 +17,17 @@
       // a will store number of calls in every hour; therefore, the length is 24.
       var  a=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];     
       var chartData=[];
+     
 
       ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB')
       .then(function(res){
-        console.dir(res.data);
+        // $scope.arr=res.data;
+        console.log('Displaying tha data');
+        // console.dir(res.data);
 
         // dataset -> array of JSON objects
-        ds = res.data;
+        $scope.arr, ds = res.data;
+        
         
         // get the hour and increment the correcsponding array index
         for(var i=0; i<ds.length; i++){         
@@ -129,8 +133,9 @@
 
 
       // 
-      $scope.dataset=ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB').then(function(res){
-        console.dir(res.data);
+      $scope.dataset=ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB')
+      .then(function(res){
+        // console.dir(res.data);
         $scope.array = res.data;
 
       });
