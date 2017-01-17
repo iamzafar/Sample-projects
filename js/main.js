@@ -144,7 +144,7 @@
 
       // sorting the data in the table
       $scope.sort = function(keyname){
-        $scope.sortKey = keyname;  
+        $scope.Key = keyname;  
         $scope.reverse = !$scope.reverse; 
       }
 
