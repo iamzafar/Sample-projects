@@ -1,5 +1,5 @@
     // creating a module and naming it as app
-    var app=angular.module('app', []);
+    var app=angular.module('app', ['angularUtils.directives.dirPagination']);
 
     // ApiService is used to get the JSON data using API
     app.service('ApiService', function($http){
@@ -131,38 +131,25 @@
         });
         
       });
-
-
-      // 
-      // $scope.dataset=ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB')
-      // .then(function(res){
-      //   // console.dir(res.data);
-      //   $scope.array = res.data;
-
-      // });
-
     });
 
-
-
+    // Controller for the table
     app.controller('TableController', function($scope, ApiService){ // second controller
-      $scope.name='TableController';
+      // $scope.name='TableController';
        $scope.dataset=ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB')
       .then(function(res){
         console.dir(res.data);
         $scope.array = res.data;
       });
 
+      // sorting the data in the table
+      $scope.sort = function(keyname){
+        $scope.sortKey = keyname;  
+        $scope.reverse = !$scope.reverse; 
+      }
+
       // });
       // $scope.testing=function(){
       //   alert('test function');
       // }      
     });
-
-     app.controller('ChartController', function($scope, $rootScope, ApiService){ // second controller
-      $scope.name='ChartController'; 
-      $scope.getJsonData = function(){
-        
-      }  
-    });
-

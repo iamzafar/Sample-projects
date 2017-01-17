@@ -16,55 +16,52 @@
   </head>
   <body ng-app="app">
     <br><br>
-    <!-- Bar chart will be here -->
-    <!-- <div class="container">
-      <div class="jumbotron">        
-        <div ng-controller="ChartController">
-          <h1 id="makeRed">Number of calls in 24 hour</h1> 
-          <button type="button" class="btn btn-primary">Sort</button>
-          <br><br>
-        </div>
-      </div>      
-    </div> -->
-  <!-- Pi chart information will be here  -->
+ 
   <div class="container">
-    <!-- <div class="jumbotron">
-      <h2>Pi chart goes here</h2>
-    </div> -->
     <div class="jumbotron"> 
     <h1><small>Amount of 911 calls in 24 hours!!!</small></h1>
       <div ng-controller="DataController">      
-        <div id="pieChart" class="makeUpper"></div>
-
-          
+        <div id="pieChart" class="makeUpper"></div>          
 
       </div>
-    </div>
-    
-    <br><br>  
-    <p>DIsplaying the table</p>  
+    </div>    
+    <br><br>   
     <!-- {{arr}}  -->
     <div role="main" class="container theme-showcase">
       <div class="col-lg-8">
         <div class="page-header">
-          <h2 id="tables">Search Sort and Pagination in Angular js</h2>
+          <h2 id="tables">Search records in dataset</h2>
         </div>
         <div class="bs-component" ng-controller="TableController">
           <!-- {{array}} -->
-          <table class="table table-striped table-hover">
+          <form class="form-inline">
+            <div class="form-group">
+              <label >Search</label>
+              <input type="text" ng-model="search" class="form-control" placeholder="Search">
+            </div>
+          </form>
+          <br>
+                
+          <table class="table table-bordered table-hover">
             <thead>
-              <tr>
-                <th>CallDateTime</th>
-                <th>Callnumber</th>
-                <th>description</th>
-                <th>district</th>
-                <th>incidentlocation</th>
-                <th>location</th>
-                <th>priority</th>
+              <tr class="success">
+                <th ng-click="sort('calldatetime')">CallDateTime
+                  <span class="glyphicon sort-icon" ng-show="sortKey=='calldatetime'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('callnumber')">Callnumber</th>
+                <th ng-click="sort('description')">description</th>
+                <th ng-click="sort('district')">district</th>
+                <th ng-click="sort('incidentlocation')">incidentlocation
+                  <span class="glyphicon sort-icon" ng-show="sortKey=='incidentlocation'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('location')">location</th>
+                <th ng-click="sort('priority')">priority
+                  <span class="glyphicon sort-icon" ng-show="sortKey=='priority'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="record in array">
+              <tr dir-paginate="record in array|orderBy:sortKey:reverse|filter:search|itemsPerPage:10">
                 <td>{{record.calldatetime}}</td>
                 <td>{{record.callnumber}}</td>
                 <td>{{record.description}}</td>
@@ -75,6 +72,10 @@
               </tr>
             </tbody>
           </table>
+          <div align="center">
+            <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" ></dir-pagination-controls>
+          </div>
+          
         </div>
       </div>
 
@@ -85,11 +86,11 @@
     </div> -->
   </div>
 
-
   <br><br>
   <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.4/d3.min.js"></script>
   <script src="js/d3pie.min.js"></script>
   <script type="text/javascript" src="/sp/Sample-projects/js/main.js"></script>
+  <script type="text/javascript" src="/sp/Sample-projects/js/dirPagination.js"></script>
 
   </body>
 </html>
