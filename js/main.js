@@ -17,7 +17,6 @@
       // a will store number of calls in every hour; therefore, the length is 24.
       var  a=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];     
       var chartData=[];
-     
 
       ApiService.getData('https://data.baltimorecity.gov/resource/m8g9-abgb.json?$$app_token=P01icqAl4ammUSWm4G3LgeLJB')
       .then(function(res){
@@ -27,14 +26,12 @@
 
         // dataset -> array of JSON objects
         ds = res.data;
-        $rootScope.arr = ds;
-        
+        $rootScope.arr = ds;        
         
         // get the hour and increment the correcsponding array index
         for(var i=0; i<ds.length; i++){         
           var dt=new Date(ds[i].calldatetime);           
-          a[dt.getHours()]++; 
-          
+          a[dt.getHours()]++;           
         }
         // array of colors for the pie chart
         var colors = ["#2484c1", "#0c6197", "#4daa4b", "#90c469", "#daca61", "#e4a14b", "#e98125", "#cb2121", "#830909", "#923e99", "#d1c87f",
@@ -48,8 +45,7 @@
             chartData[h]={"label":h.toString(), "value": 0.1,"color": colors[h]};
           }else{
             chartData[h]={"label":h.toString(), "value": a[h],"color": colors[h]};
-          }
-          
+          }          
         }
         // printing the array of elements
         console.dir(chartData);
